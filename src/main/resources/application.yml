@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: employess
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+
+employess:
+  base-url: http://localhost:8080
+
+  short-code-length: 6
+  max-generation-attempts: 10
+
+  rate-limit:
+    requests-per-minute: 10
+    requests-per-hours: 100
+
+  cache-ttl-minutes: 30
+
+  cleanup:
+    interval-minutes: 5
+
+logging:
+  level:
+    Employess_data.employess: DEBUG
+    org.springframework.data.redis: DEBUG
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
